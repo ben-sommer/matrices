@@ -29,13 +29,9 @@ const determinant = (matrix) => {
 const inverse = (matrix) => {
   const det = determinant(matrix);
 
-  matrix = matrix.map((r, x) => r.map((_, y) => minor(matrix, x, y)));
-
-  matrix = matrix.map((r, x) => r.map((c, y) => (-1) ** (x + y) * c));
-
-  matrix = matrix.map((r, x) => r.map((c, y) => c / det));
-
-  return matrix;
+  return matrix.map((r, x) =>
+    r.map((c, y) => ((-1) ** (x + y) * minor(matrix, x, y)) / det)
+  );
 };
 
 console.log(determinant(M));
