@@ -11,13 +11,7 @@ const minor = (matrix, row, col) => {
 };
 
 const cofactor = (matrix, row, col) => {
-  return (
-    (-1) ** (row + col) *
-    matrix[row][col] *
-    determinant(
-      matrix.filter((_, i) => i != row).map((r) => r.filter((_, j) => j != col))
-    )
-  );
+  return (-1) ** (row + col) * matrix[row][col] * minor(matrix, row, col);
 };
 
 const determinant = (matrix) => {
